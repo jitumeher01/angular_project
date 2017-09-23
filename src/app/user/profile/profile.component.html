@@ -1,0 +1,66 @@
+
+<!-- Page Content -->
+<div class="container">
+  
+    <!-- Page Heading/Breadcrumbs -->
+    <h1 class="mt-4 mb-3">My Profile</h1>
+  
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="">Home</a></li>
+      <li class="breadcrumb-item active">Profile</li>
+    </ol>
+  
+    <!-- Content Row -->
+    <div class="row">
+      <!-- Sidebar Column -->
+  
+      <div class="col-lg-3 mb-4">
+        <div class="list-group">
+          <profile-navbar></profile-navbar>
+  
+        </div>
+      </div>
+      <!-- Content Column -->
+      <div class="col-lg-9 mb-4">
+  
+        <h2>Profile Details:</h2>
+        <table class="table">
+          <tbody>
+  
+            <tr class="success">
+              <td>User Id:</td>
+              <td>{{user.userId}}</td>
+            </tr>
+            <tr class="danger">
+              <td>Name:</td>
+              <td>{{user.name}}</td>
+            </tr>
+            <tr class="info">
+              <td>Mobile:</td>
+              <td>{{user.mobile}}</td>
+            </tr>
+            <tr class="warning">
+              <td>Email Id:</td>
+              <td>{{user.email}}</td>
+            </tr>
+            <tr class="active">
+              <td>Sponsor Id:</td>
+              <td>{{user.sponserId}}</td>
+            </tr>
+            <tr class="active">
+              <td>Sponsor Name:</td>
+              <td>{{user.sponsorName}}</td>
+            </tr>
+            <tr class="active">
+              <td>Sponsor Mobile:</td>
+              <td>{{user.sponsorMobile}}</td>
+            </tr>
+          </tbody>
+        </table>
+  
+      </div>
+    </div>
+    <!-- /.row -->
+  
+  </div>
+  <!-- /.container -->

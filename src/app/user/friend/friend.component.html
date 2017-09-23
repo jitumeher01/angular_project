@@ -1,0 +1,47 @@
+
+ <!-- Page Content -->
+ <div class="container">
+    
+          <!-- Page Heading/Breadcrumbs -->
+          <h1 class="mt-4 mb-3">
+            <small>Friends List</small>
+          </h1>
+    
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="/">Dashboard</a>
+            </li>
+            <li class="breadcrumb-item active">Friends</li>
+          </ol>
+            
+    
+        
+
+<div class="row">
+  <h2>Friends Details:</h2>   
+  <table class="table table-condensed">
+    <thead>
+      <tr>
+        <th>User Id</th>
+        <th>Name</th>
+        <th>Mobile</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor=" let user of users">
+        <td>{{user.userId}}</td>
+        <td>{{user.name}}</td>
+        <td>{{user.mobile}}</td>
+       
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+
+
+    
+        </div>
+        <!-- /.container -->
+
+

@@ -1,0 +1,92 @@
+
+ <!-- Page Content -->
+ <div class="container">
+    
+          <!-- Page Heading/Breadcrumbs -->
+          <h1 class="mt-4 mb-3">
+            <small>Royal Life Commit</small>
+          </h1>
+    
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="/">Dashboard</a>
+            </li>
+            <li class="breadcrumb-item active">commit</li>
+          </ol>
+            
+    
+          <!-- Login Form -->
+          <!-- In order to set the email address and subject line for the contact form go to the bin/contact_me.php file. -->
+          <div class="row" *ngIf="user.commitData===null">
+            <div class="col-lg-8 mb-4">
+              <h3>Commit Here</h3>
+                   <div *ngIf="errorMessage" class="alert alert-danger">
+                  
+                         {{errorMessage}}
+                   </div>
+
+              <form #commitForm="ngForm" (ngSubmit)="userAddCommit(commitForm.value)" id="commitForm" novalidate>
+                <div class="control-group form-group">
+                  <div class="controls">
+                    <label>Commit Amount:</label>
+                    <select name="commitAmount" class="form-control" id="commitAmount" [(ngModel)]="commit.commitAmount" #commitAmount="ngModel">
+                       <option *ngFor="let c of cAmount" [ngValue]="c.amount"> {{c.amount}} </option>
+                    </select>
+
+                  </div>
+                </div>
+                <div class="control-group form-group">
+                  <div class="controls">
+                    <label>Commit Plan:</label>
+                    <select name="plan" class="form-control" id="plan" [(ngModel)]="commit.plan" #plan="ngModel">
+                        <option *ngFor="let c of cPlan" [ngValue]="c.id" [selected]="c.name == '15 Days Plan'"> {{c.name}} </option>
+                     </select>
+
+                  </div>
+                </div>
+               
+                
+                <div id="success"></div>
+                <!-- For success/fail messages -->
+                <button type="submit" [disabled]="!commitForm.form.valid || isSubmit" class="btn btn-primary">
+                    <i *ngIf="isSubmit" class="fa fa-spinner fa-spin" style="font-size:24px"></i>
+                  Login
+                </button>
+              </form>
+            </div>
+    
+          </div>
+          <!-- /.row -->
+
+
+<div class="row" *ngIf="user.commitData">
+  <h2>Commit Details:</h2>         
+  <table class="table table-condensed">
+    <thead>
+      <tr>
+        <th>Commit Amount</th>
+        <th>Maturity Amount</th>
+        <th>Commit Date</th>
+        <th>Maturity Date</th>
+        <th>Plan</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{user.commitData.commitAmount}}</td>
+        <td>{{user.commitData.maturityAmount}}</td>
+        <td>{{user.commitData.commitDate | date:'mediumDate'}}</td>
+        <td>{{user.commitData.maturityDate | date:'mediumDate'}}</td>
+        <td>{{user.commitData.name}}</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+
+
+    
+        </div>
+        <!-- /.container -->
+
+
