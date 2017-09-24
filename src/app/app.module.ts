@@ -41,6 +41,7 @@ import { AllBankComponent } from '../app/user/profile/bankdetail/allbank.compone
 
 import { CommitComponent } from '../app/user/commit/commit.component';
 import { FriendComponent } from '../app/user/friend/friend.component';
+import { Growthomponent } from '../app/user/growth/growth.component';
 
 
 import 'rxjs/add/operator/map';
@@ -65,7 +66,8 @@ import 'rxjs/add/operator/toPromise';
   ProfileNavBarComponent,
   AllBankComponent,
   CommitComponent,
-  FriendComponent
+  FriendComponent,
+  Growthomponent
    ],
   bootstrap:    [ AppComponent ],
   providers: [AuthService, UserService, UrlService, CommitService, FriendService, LoadingService]

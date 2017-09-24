@@ -12,7 +12,6 @@ export class AuthService implements CanActivate{
      }
 
 canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot){
-    console.log(next.routeConfig.path==='user/commit');
     if (localStorage.getItem('token') && localStorage.getItem('userId')) {
         // if (next.routeConfig.path === 'user/commit') {
         //     console.log('commit');
@@ -54,7 +53,6 @@ getTokenHeader(): any{
      headers.append('token', `${authToken}`);
 
      let options = new RequestOptions({ headers: headers });
-     console.log(options);
      return options;
 };
 

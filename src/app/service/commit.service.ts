@@ -14,8 +14,6 @@ export class CommitService {
     constructor( private _http: Http, private _authService: AuthService) {}
 
         userCommit(): Observable<User> {
-            console.log(this._authService.getTokenHeader());
-            console.log('kkk');
                 return this._http.get(URLS.userCommitURL, this._authService.getTokenHeader())
                 .map(res => res.json())
                 .catch(err => {

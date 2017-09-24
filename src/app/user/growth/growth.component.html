@@ -1,0 +1,64 @@
+
+ <!-- Page Content -->
+ <div class="container">
+    
+          <!-- Page Heading/Breadcrumbs -->
+          <h1 class="mt-4 mb-3">
+            <small>Royal Life Growth</small>
+          </h1>
+    
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="/">Dashboard</a>
+            </li>
+            <li class="breadcrumb-item active">Growth</li>
+          </ol>
+            
+    
+          <!-- Login Form -->
+          <!-- In order to set the email address and subject line for the contact form go to the bin/contact_me.php file. -->
+          <div class="row" *ngIf="user.commitData===null">
+            <div class="col-lg-8 mb-4">
+              <h3>Not Commited yet Please commit here !</h3>
+                   
+
+           
+            </div>
+    
+          </div>
+          <!-- /.row -->
+
+
+<div class="row" *ngIf="user.commitData">
+  <h2>Commit Details:</h2>         
+  <table class="table table-condensed">
+    <thead>
+      <tr>
+        <th>Sl No</th>
+        <th>Commit Date</th>
+        <th>Growth Date</th>
+        <th>Commit Amount</th>
+        <th>Growth Amount</th>
+        <th>Total Amount</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor=" let growth of growths">
+        <td>{{growth.id}}</td>
+        <td>{{growth.commitDate | date:'mediumDate'}}</td>
+        <td>{{growth.growthDate | date:'mediumDate'}}</td>
+        <td>{{growth.commitAmount}}</td>
+        <td>{{growth.growthAmount}}</td>
+        <td>{{growth.totalAmount}}</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+
+
+
+    
+        </div>
+        <!-- /.container -->
+
+

@@ -16,6 +16,8 @@ import { ChangePasswordComponent } from '../app/user/profile/changepass/changepa
 import { AllBankComponent } from '../app/user/profile/bankdetail/allbank.component';
 import { CommitComponent } from '../app/user/commit/commit.component';
 import { FriendComponent } from '../app/user/friend/friend.component';
+import { Growthomponent } from '../app/user/growth/growth.component';
+
 
 
 
@@ -33,6 +35,7 @@ export const routes: Routes = [
      {path: 'user/viewBankDetails', component: AllBankComponent, canActivate: [AuthService]},
      {path: 'user/commit', component: CommitComponent, canActivate: [AuthService]},
     {path: 'user/friends', component: FriendComponent, canActivate: [AuthService]},
+    {path: 'user/growth', component: Growthomponent, canActivate: [AuthService]},
     {path: '', redirectTo: '/home', pathMatch : 'full'}
 
 ];
