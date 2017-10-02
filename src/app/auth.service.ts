@@ -6,13 +6,13 @@ import { Headers, RequestOptions } from '@angular/http';
 export class AuthService implements CanActivate{
     private isLoggedIn: boolean= false;
      constructor(private router: Router){
-            if (localStorage.getItem('token') && localStorage.getItem('userId')) {
+            if (localStorage.getItem('access_token') && localStorage.getItem('userId')) {
                 this.isLoggedIn = true;
             }
      }
 
 canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot){
-    if (localStorage.getItem('token') && localStorage.getItem('userId')) {
+    if (localStorage.getItem('access_token') && localStorage.getItem('userId')) {
         // if (next.routeConfig.path === 'user/commit') {
         //     console.log('commit');
         //     return true;
@@ -32,9 +32,9 @@ canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot){
 
 
 logout(){
-    localStorage.removeItem('token');
-    localStorage.removeItem('userId');
-    localStorage.removeItem('commit');
+    // localStorage.removeItem('token');
+    // localStorage.removeItem('userId');
+    // localStorage.removeItem('commit');
     this.isLoggedIn = false;
 }
 

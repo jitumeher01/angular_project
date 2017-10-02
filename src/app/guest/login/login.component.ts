@@ -7,12 +7,14 @@ import {AuthService} from '../../auth.service';
 import {Router} from '@angular/router';
 
 import {User} from '../../model/user';
+import {TokenData} from '../../model/token.data';
 
 @Component({
   templateUrl: './login.component.html',
 })
 export class LoginComponent {
     user: User= new User();
+    token: TokenData= new TokenData();
     errorMessage: String= '';
    constructor(
     private _userService: UserService,
@@ -24,14 +26,15 @@ export class LoginComponent {
      this._loadingService.openModal();
      this._userService.userLogin(user)
     .subscribe(
-      user => {
-        localStorage.setItem('token', user.token);
-        localStorage.setItem('userId', user.userId);
-        if (user.commitData !== null) {
-          localStorage.setItem('commit', 'true');
-        }
+      token => {
+        console.log(user.userId);
+        localStorage.setItem('userId',user.userId);
+        localStorage.setItem('access_token',token.access_token);
+        localStorage.setItem('refresh_token', token.refresh_token);
+        localStorage.setItem('expires_in', token.expires_in);
+        console.log(token);
         this._authService.setIsloggedIn(true);
-        console.log(user);
+       
        this._loadingService.closeModal();
         this._route.navigate(['user/dashboard']);
       },

@@ -1,15 +1,18 @@
 
  export const API = {
     // apiUrl: 'http://54.187.210.102:8080/royallife/api/rest/'
-    apiUrl: 'http://localhost:8080/api/rest/'
+    apiUrl: 'http://localhost:9090/api/rest/',
+    oauthUrl: 'http://localhost:9090/oauth/token'
+
   };
 
 export const URLS = {
+    
     userCommitURL: API.apiUrl + 'user/commit',
      userAddCommitUrl:  API.apiUrl + 'user/addCommit',
      userFriendsUrl: API.apiUrl + 'user/friend/all',
-     userLoginUrl:  API.apiUrl + 'user/login',
-     userRegisterUrl:  API.apiUrl + 'user/register',
+     userLoginUrl:  API.oauthUrl,
+     userRegisterUrl:  API.apiUrl + 'public/register',
      userProfileUrl:  API.apiUrl + 'user/profile',
      userUpdateProfileUrl:  API.apiUrl + 'user/updateProfile',
      userUpdatePasswordUrl:  API.apiUrl + 'user/updatePassword',

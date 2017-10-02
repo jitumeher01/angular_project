@@ -7,19 +7,33 @@ import {URLS} from './url.constant';
 import {BankDetail} from '../model/bankdetail';
 import 'rxjs/add/observable/throw';
 
+import {TokenData} from '../model/token.data';
+
 @Injectable()
 export class UserService {
   user: User= new User();
+  token: TokenData= new TokenData();
   bankDetails: BankDetail[]= [];
 
     constructor(private _http: Http) {
     }
 
 
-    userLogin(credentials: User): Observable<User> {
-        console.log(URLS.userLoginUrl);
-        console.log(credentials);
-        return this._http.post(URLS.userLoginUrl, credentials)
+    userLogin(credentials: User): Observable<TokenData> {
+       
+        let headers: Headers = new Headers();
+        headers.append("Authorization", 'Basic Z3VydTpndXJ1');
+        headers.append('Content-Type', 'application/x-www-form-urlencoded');
+        let options = new RequestOptions({headers: headers});
+
+        let  body = new URLSearchParams();
+        body.append('username',credentials.userId);
+        body.append('password',credentials.password);
+        body.append('grant_type', 'password');
+
+
+        console.log(options);
+        return this._http.post(URLS.userLoginUrl,body.toString(),options)
         .map(res => res.json())
         .catch(err => {
             return Observable.throw(err._body || 'Server Error ...');
@@ -35,8 +49,10 @@ export class UserService {
     }
 
      userProfile(): Observable<User> {
+        let  body = new URLSearchParams();
+        body.append('access_token',localStorage.getItem('access_token'));
 
-        return this._http.get(URLS.userProfileUrl, this.getTokenHeader())
+        return this._http.get(URLS.userProfileUrl+"/"+localStorage.getItem('userId'),body.toString())
         .map(res => res.json())
         .catch(err => {
             return Observable.throw(err._body || 'Server Error ...');
@@ -105,7 +121,7 @@ export class UserService {
 
 
     getTokenHeader(): any{
-       let authToken = localStorage.getItem('token');
+       let authToken = localStorage.getItem('access_token');
         let headers = new Headers({ 'Accept': 'application/json' });
         headers.append('token', `${authToken}`);
 
