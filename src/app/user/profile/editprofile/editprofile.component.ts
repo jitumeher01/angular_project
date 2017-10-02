@@ -40,14 +40,12 @@ export class EditProfileComponent implements  OnInit{
 	}
 
 	updateProfile(user: User){
-	     console.log(user);
 	      this._loadingService.openModal();
 	     this.isSubmit=true;
 	     this._userService.userUpdateProfile(user)
 	     .subscribe(
-	      user => {
+	      res => {
 	       this.user=user;
-	        console.log(user);
 	        this.isSubmit=false;
 	         this._loadingService.closeModal();
 	        this.successMessage ='Profile Update Successfully !';

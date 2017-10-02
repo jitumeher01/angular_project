@@ -17,5 +17,6 @@ export class User {
     expiryDate: string;
     isComit: boolean;
     commitData: Commit;
+    access_token: string;
 
 }

@@ -6,4 +6,6 @@ export class BankDetail {
     bankName: string;
     branchName: string;
     ifsc: string;
+    userId: string;
+    access_token: string;
 }

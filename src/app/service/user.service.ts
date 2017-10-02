@@ -60,16 +60,18 @@ export class UserService {
     }
 
      userUpdateProfile(user: User): Observable<User> {
-
-        return this._http.post(URLS.userUpdateProfileUrl,user,this.getTokenHeader())
-        .map(res => res.json())
+        user.access_token=localStorage.getItem('access_token');
+        return this._http.post(URLS.userUpdateProfileUrl,user)
+        .map(res => res)
         .catch(err => {
+            console.log(err);
             return Observable.throw(err._body || 'Server Error ...');
         });
     }
     userUpdatePassword(user: User): Observable<string> {
-
-        return this._http.post(URLS.userUpdatePasswordUrl,user,this.getTokenHeader())
+        user.access_token=localStorage.getItem('access_token');
+        user.userId=localStorage.getItem('userId');
+        return this._http.post(URLS.userUpdatePasswordUrl,user)
         .map(res => res)
         .catch(err => {
             return Observable.throw(err._body || 'Server Error ...');
@@ -78,7 +80,9 @@ export class UserService {
 
 
     usergetAllBankDetails(): Observable<BankDetail[]> {
-                return this._http.get(URLS.userGetAllBankDetailsUrl, this.getTokenHeader())
+        let  body = new URLSearchParams();
+        body.append('access_token',localStorage.getItem('access_token'));
+                return this._http.get(URLS.userGetAllBankDetailsUrl+"/"+localStorage.getItem('userId'),body.toString())
                 .map(res => res.json())
                 .catch(err => {
                     return Observable.throw(err._body || 'Server Error ...');
@@ -86,7 +90,9 @@ export class UserService {
             }
 
             userAddBankDetails(bank: BankDetail): Observable<BankDetail[]> {
-                return this._http.post(URLS.userAddBankDetailsUrl, bank, this.getTokenHeader())
+                bank.userId=localStorage.getItem('userId');
+                bank.access_token=localStorage.getItem('access_token');
+                return this._http.post(URLS.userAddBankDetailsUrl, bank)
                 .map(res => res.json())
                 .catch(err => {
                     return Observable.throw(err._body || 'Server Error ...');
